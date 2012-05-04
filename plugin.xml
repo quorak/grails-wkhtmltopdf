@@ -1,0 +1,15 @@
+<plugin name='wkhtmltox' version='0.1' grailsVersion='1.3.6 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/wkhtmltox</documentation>
+  <resources>
+    <resource>DefaultWkhtmltoxConfig</resource>
+    <resource>org.wkhtmltox.TestController</resource>
+    <resource>org.wkhtmltox.WkhtmltoxService</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>
