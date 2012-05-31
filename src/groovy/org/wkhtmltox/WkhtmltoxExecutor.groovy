@@ -40,11 +40,13 @@ class WkhtmltoxExecutor {
 
 
         def commandList = wrapper.toArgumentsList()
+        byte[] data
         commandList.add(0,binaryPath)
         commandList.add("-q")
         commandList.add("-")
         commandList.add("-")
 
+        System.out.print(commandList.toString())
         ProcessBuilder builder = new ProcessBuilder(commandList);
         final Process process = builder.start();
 
@@ -52,20 +54,19 @@ class WkhtmltoxExecutor {
         os.write(html)
         os.close()
 
-
-            System.out.print("asd")
-        String error = ""
-        process.getErrorStream().withReader {
-            System.out.print(it.readLine())
-            //error << it.readLine()
+        try{
+            data = IOUtils.toByteArray(process.getInputStream())
+        }catch(Exception e) {
+            throw new WkhtmltoxException(e)
+        }finally{
+            process.getInputStream().close()
+            String error = ""
+            process.getErrorStream().withReader {
+                System.out.print(it.readLine())
+                error << it.readLine()
+            }
+            process.getErrorStream().close()
         }
-
-        process.getErrorStream().close()
-        if(error && !error.empty){
-            throw new WkhtmltoxException(error)
-        }
-
-
-        return IOUtils.toByteArray(process.getInputStream())
+        return data
     }
 }

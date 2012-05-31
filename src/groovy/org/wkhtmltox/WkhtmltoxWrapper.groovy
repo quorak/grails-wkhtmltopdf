@@ -138,6 +138,7 @@ class WkhtmltoxWrapper {
     boolean noHeaderLine						//						//Do not display line below the header (default)
     String headerRight							//<text>				//Right aligned header text
     Integer  headerSpacing						//<real>				//Spacing between header and content in mm (default 0)
+
     //replace*									//<name> <value>		//Replace [name] with value in header and footer (repeatable)
 
     //
