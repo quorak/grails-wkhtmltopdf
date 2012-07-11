@@ -3,24 +3,38 @@ import org.apache.catalina.core.ApplicationContext
 
 class WkhtmltoxGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "0.1.5"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.6 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    def dependsOn = ['mail': '1.0 > *',pluginConfig: '0.1.4 > *']
+    def loadAfter = ['mail','controllers'];
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp"
     ]
 
     // TODO Fill in these fields
-    def author = "Your name"
-    def authorEmail = ""
-    def title = "Plugin summary/headline"
+    def author = "Tobias Nendel"
+    def authorEmail = "tobias.nendel@scubical.com"
+    def title = "Wkhtmltopdf"
     def description = '''\\
-Brief description of the plugin.
+This Plugin provides a Wrapper for wkhtmltopdf,
+a Simple shell utility to convert html to pdf using the webkit rendering engine, and qt.
+
+        render( filename:"Filename ${filename}.pdf",view:"/path_to_gsp",
+                model:[someModel:someModel],
+                header:"/path_to_gsp",
+                footer:"/path_to_gsp",
+                marginLeft:20,
+                marginTop:30,
+                marginBottom:20,
+                marginRight:20,
+                headerSpacing:10
+        )
 '''
-    def loadAfter = ['controllers']
+    def license = "APACHE"
+
     def observe = ['controllers']
 
     // URL to the plugin's documentation

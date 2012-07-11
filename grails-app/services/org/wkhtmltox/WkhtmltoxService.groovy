@@ -1,18 +1,12 @@
 package org.wkhtmltox
 
-import org.codehaus.groovy.grails.commons.GrailsClassUtils as GCU
-
-import grails.util.GrailsWebUtil
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
-import grails.plugin.mail.MailMessageContentRender
-import grails.plugin.mail.MailMessageContentRenderer
-import javax.servlet.http.HttpServletRequest
 
 class WkhtmltoxService {
 
     static transactional = true
-    def config = ConfigurationHolder.config.grails.plugins.wkhtmltox
     def mailMessageContentRenderer
+    def grailsApplication
 
     def byte[] makePdf(config) {
 
@@ -59,7 +53,16 @@ class WkhtmltoxService {
             wrapper.footerHtml =        "file://" + footerFile.absolutePath
         }
 
-        WkhtmltoxExecutor wkhtmltoxExecutor = new WkhtmltoxExecutor(config.binary.toString(),wrapper)
+
+        String binaryFilePath = grailsApplication.mergedConfig.grails.plugin.wkhtmltox.binary.toString()
+
+        if(!(new File(binaryFilePath)).exists()){
+            println "Cannot find wkhtml executable at $binaryFilePath trying to make it available with the makeBinaryAvailableClosure"
+            Closure makeBinaryAvailableClosure = grailsApplication.mergedConfig.grails.plugin.wkhtmltox.makeBinaryAvailableClosure
+            makeBinaryAvailableClosure.call(binaryFilePath)
+        }
+
+        WkhtmltoxExecutor wkhtmltoxExecutor = new WkhtmltoxExecutor(binaryFilePath,wrapper)
 
         return wkhtmltoxExecutor.generatePdf(htmlBodyContent)
 
@@ -77,7 +80,7 @@ class WkhtmltoxService {
     File makePartialViewFile(PartialView pv){
         String content = renderMailView(pv)
         File tempFile = File.createTempFile("/wkhtmltopdf",".html")
-        tempFile.withWriter {
+        tempFile.withWriter("UTF8") {
             it.write(content)
             it.close()
         }
@@ -85,6 +88,5 @@ class WkhtmltoxService {
         tempFile.setWritable(true,true)
         return tempFile
     }
-
 
 }

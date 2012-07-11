@@ -1,67 +1,41 @@
-<plugin name='wkhtmltox' version='0.1' grailsVersion='2.0.3 &gt; *'>
-  <author>Your name</author>
-  <title>Plugin summary/headline</title>
+<plugin name='wkhtmltox' version='0.1.5' grailsVersion='1.3.6 &gt; *'>
+  <author>Tobias Nendel</author>
+  <authorEmail>tobias.nendel@scubical.com</authorEmail>
+  <title>Wkhtmltopdf</title>
   <description>\
-Brief description of the plugin.
+This Plugin provides a Wrapper for wkhtmltopdf,
+a Simple shell utility to convert html to pdf using the webkit rendering engine, and qt.
+
+        render( filename:"Filename ${filename}.pdf",view:"/path_to_gsp",
+                model:[someModel:someModel],
+                header:"/path_to_gsp",
+                footer:"/path_to_gsp",
+                marginLeft:20,
+                marginTop:30,
+                marginBottom:20,
+                marginRight:20,
+                headerSpacing:10
+        )
 </description>
   <documentation>http://grails.org/plugin/wkhtmltox</documentation>
   <type>WkhtmltoxGrailsPlugin</type>
   <resources>
     <resource>DefaultWkhtmltoxConfig</resource>
-    <resource>org.wkhtmltox.TestController</resource>
     <resource>org.wkhtmltox.WkhtmltoxService</resource>
   </resources>
   <repositories>
-    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
     <repository name='grailsCentral' url='http://plugins.grails.org' />
     <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
     <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
-    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
-    <repository name='http://109.239.60.8:8081/artifactory/plugins-release-local/' url='http://109.239.60.8:8081/artifactory/plugins-release-local/' />
+    <repository name='http://repo.dev.paulsecret.com:8081/artifactory/plugins-release-local/' url='http://repo.dev.paulsecret.com:8081/artifactory/plugins-release-local/' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
     <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
-    <repository name='http://snapshots.repository.codehaus.org' url='http://snapshots.repository.codehaus.org/' />
-    <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
-    <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
   </repositories>
-  <dependencies>
-    <compile>
-      <dependency group='org.grails.plugins' name='ps-payment' version='0.3.6.1' />
-      <dependency group='org.grails.plugins' name='ps-core' version='0.2.7.4' />
-    </compile>
-    <runtime>
-      <dependency group='org.ccil.cowan.tagsoup' name='tagsoup' version='1.2.1' />
-      <dependency group='postgresql' name='postgresql' version='9.1-901.jdbc4' />
-    </runtime>
-  </dependencies>
-  <plugins>
-    <compile>
-      <plugin group='org.grails.plugins' name='csv' version='0.3.1' />
-      <plugin group='org.grails.plugins' name='database-migration' version='1.0' />
-      <plugin group='org.grails.plugins' name='cloud-support' version='1.0.8' />
-      <plugin group='org.grails.plugins' name='spring-security-core' version='1.2.7.2' />
-      <plugin group='org.grails.plugins' name='filterpane' version='2.0.1.1' />
-      <plugin group='org.grails.plugins' name='heroku' version='1.0' />
-    </compile>
-    <runtime>
-      <plugin group='org.grails.plugins' name='xmlrpc' version='0.1' />
-      <plugin group='org.grails.plugins' name='riptide-salesforce' version='1.19.0' />
-      <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.11' />
-      <plugin group='org.grails.plugins' name='svn' version='1.0.2' />
-      <plugin group='org.grails.plugins' name='spring-security-ui' version='0.2' />
-      <plugin group='org.grails.plugins' name='bean-fields' version='1.1' />
-      <plugin group='org.grails.plugins' name='fsm' version='0.6.6' />
-      <plugin group='org.grails.plugins' name='hibernate' version='2.0.3' />
-      <plugin group='org.grails.plugins' name='mail' version='1.0' />
-      <plugin group='org.grails.plugins' name='resources' version='1.1.5' />
-      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
-      <plugin group='org.grails.plugins' name='quartz' version='0.4.2' />
-      <plugin group='org.grails.plugins' name='settings' version='1.4' />
-    </runtime>
-    <build>
-      <plugin group='org.grails.plugins' name='tomcat' version='2.0.3' />
-    </build>
-  </plugins>
-  <runtimePluginRequirements />
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements>
+    <plugin name='mail' version='1.0 &gt; *' />
+  </runtimePluginRequirements>
   <behavior />
 </plugin>

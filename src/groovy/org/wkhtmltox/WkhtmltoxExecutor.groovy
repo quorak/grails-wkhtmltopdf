@@ -50,7 +50,7 @@ class WkhtmltoxExecutor {
         ProcessBuilder builder = new ProcessBuilder(commandList);
         final Process process = builder.start();
 
-        OutputStreamWriter os = new OutputStreamWriter(process.getOutputStream())
+        OutputStreamWriter os = new OutputStreamWriter(process.getOutputStream(),"UTF8")
         os.write(html)
         os.close()
 
