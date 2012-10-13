@@ -24,6 +24,8 @@ a Simple shell utility to convert html to pdf using the webkit rendering engine,
     def documentation = "http://grails.org/plugin/wkhtmltox"
 
     def license = "APACHE"
+	 def issueManagement = [system: 'Github', url: 'https://github.com/quorak/grails-wkhtmltopdf/issues']
+	 def scm = [url: 'https://github.com/quorak/grails-wkhtmltopdf']
 
     def doWithDynamicMethods = {ctx ->
         // hooking into render method
