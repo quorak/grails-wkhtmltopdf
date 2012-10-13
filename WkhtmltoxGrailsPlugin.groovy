@@ -7,7 +7,6 @@ class WkhtmltoxGrailsPlugin {
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.6 > *"
     // the other plugins this plugin depends on
-    def dependsOn = ['mail': '1.0 > *',pluginConfig: '0.1.4 > *']
     def loadAfter = ['mail','controllers'];
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
