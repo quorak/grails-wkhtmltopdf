@@ -81,6 +81,11 @@ Or create binary pdf data and use them for any other purpose
         }
     }
 
+write your gsps as usual, just make sure, that the url's to the resources are absolute and reachable by the host maschine
+
+	<link rel="stylesheet" href="${resource(dir: '/css/style.css', absolute: true)}" type="text/css"/>
+	<img src="${resource(dir: '/images/image.jpg', absolute: true)}" width="200px"/>
+
 Known issues
 ----------------
 
@@ -94,51 +99,3 @@ Known issues
 
 * wkhtmltox must work ( try: ```wkhtmltopdf www.myhomepage.com myhomepage.pdf``` see: http://code.google.com/p/wkhtmltopdf/wiki/Usage )
 * not tested on Windows
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
-	
-	use
