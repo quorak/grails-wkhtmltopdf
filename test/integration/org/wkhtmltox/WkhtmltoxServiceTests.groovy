@@ -1,36 +1,23 @@
 package org.wkhtmltox
 
-import grails.test.*
-import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
+class WkhtmltoxServiceTests extends GroovyTestCase {
 
-class WkhtmltoxServiceTests extends GrailsUnitTestCase {
-    protected void setUp() {
-        super.setUp()
-    }
+	WkhtmltoxService wkhtmltoxService
 
-    protected void tearDown() {
-        super.tearDown()
-    }
+	def grailsApplication
 
+	void testSomething() {
 
-    WkhtmltoxService wkhtmltoxService
+		grailsApplication.config.grails.plugins.wkhtmltox.binary = "/bin/asd"
 
+		WkhtmltoxWrapper wrapper = new WkhtmltoxWrapper()
+		wrapper.marginLeft = 5
+		wrapper.marginRight = 5
+		wrapper.marginTop = 5
+		wrapper.marginBottom = 5
 
-    void testSomething() {
+		PartialView view = new PartialView("/test/test",[])
 
-        CH.config.grails.plugins.wkhtmltox.binary = "/bin/asd"
-
-        WkhtmltoxWrapper wrapper = new WkhtmltoxWrapper()
-        wrapper.marginLeft = 5
-        wrapper.marginRight = 5
-        wrapper.marginTop = 5
-        wrapper.marginBottom = 5
-
-        PartialView view = new PartialView("/test/test",[])
-
-
-
-        wkhtmltoxService.makePdf(wrapper,view)
-
-    }
+		wkhtmltoxService.makePdf(wrapper,view)
+	}
 }

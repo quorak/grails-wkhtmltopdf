@@ -1,11 +1,7 @@
 package org.wkhtmltox
 
 /**
- * Created by IntelliJ IDEA.
- * User: tobiasnendel
- * Date: 18.04.11
- * Time: 13:45
- * To change this template use File | Settings | File Templates.
+ * @author tobiasnendel
  */
 class PartialView {
 
