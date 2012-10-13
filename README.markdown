@@ -7,16 +7,20 @@ http://code.google.com/p/wkhtmltopdf/
 Installation
 ----------------
 
-Mac
+mac
+
     brew install wkhtmltopdf
 
 linux
+
     apt-get install wkhtmltopdf
 
 see: http://code.google.com/p/wkhtmltopdf/wiki/compilation
 
 Configuration
 ----------------
+
+put the following line into your Config.groovy and adjust the path to your wkhtmltox binary ( which wkhtmltopdf )
 
     grails.plugin.wkhtmltox.binary = "/usr/bin/wkhtmltopdf"
 
@@ -71,3 +75,11 @@ Or create binary pdf data and use them for any other purpose
             //}
         }
     }
+
+
+
+Known issues
+----------------
+
+* wkhtmltox must work ( try: ```wkhtmltopdf www.myhomepage.com myhomepage.pdf``` see: http://code.google.com/p/wkhtmltopdf/wiki/Usage )
+* not tested on Windows
