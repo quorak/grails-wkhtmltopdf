@@ -1,7 +1,7 @@
 Grails Wkhtmltox / Wkhtmltopdf 
 =========================
 
-This plugin provides an easy integration of the wkthmltox library into grails.
+This plugin provides an easy integration of the wkthmltox library into Grails.
 
 Wkhtmltopdf
 ----------------

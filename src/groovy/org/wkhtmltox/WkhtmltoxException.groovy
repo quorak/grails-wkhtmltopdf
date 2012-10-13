@@ -1,13 +1,9 @@
 package org.wkhtmltox
 
 /**
- * Created by IntelliJ IDEA.
- * User: tobiasnendel
- * Date: 21.04.11
- * Time: 09:07
- * To change this template use File | Settings | File Templates.
+ * @author tobiasnendel
  */
-class WkhtmltoxException extends  Exception{
+class WkhtmltoxException extends Exception {
 
     WkhtmltoxException() {
     }

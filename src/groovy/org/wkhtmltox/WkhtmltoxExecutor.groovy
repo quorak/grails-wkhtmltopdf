@@ -1,15 +1,9 @@
 package org.wkhtmltox
 
 import org.apache.commons.io.IOUtils
-import org.apache.jasper.tagplugins.jstl.core.Url
-import org.apache.commons.io.CopyUtils
 
 /**
- * Created by IntelliJ IDEA.
- * User: tobiasnendel
- * Date: 19.04.11
- * Time: 21:15
- * To change this template use File | Settings | File Templates.
+ * @author tobiasnendel
  */
 class WkhtmltoxExecutor {
 
@@ -47,8 +41,8 @@ class WkhtmltoxExecutor {
         commandList.add("-")
 
         System.out.print(commandList.toString())
-        ProcessBuilder builder = new ProcessBuilder(commandList);
-        final Process process = builder.start();
+        ProcessBuilder builder = new ProcessBuilder(commandList)
+        final Process process = builder.start()
 
         OutputStreamWriter os = new OutputStreamWriter(process.getOutputStream(),"UTF8")
         os.write(html)

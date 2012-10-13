@@ -1,14 +1,11 @@
 package org.wkhtmltox
 
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
-
 class WkhtmltoxService {
 
-    static transactional = true
     def mailMessageContentRenderer
     def grailsApplication
 
-    def byte[] makePdf(config) {
+    byte[] makePdf(config) {
 
         WkhtmltoxWrapper wrapper = new WkhtmltoxWrapper()
 
@@ -18,7 +15,7 @@ class WkhtmltoxService {
         def header = config.remove("header")
         def footer = config.remove("footer")
 
-        config.encoding = config.encoding ? config.encoding : "UTF-8";
+        config.encoding = config.encoding ?: "UTF-8"
 
         PartialView contentPartial = new PartialView(view,model,plugin)
         PartialView headerPartial
@@ -35,12 +32,10 @@ class WkhtmltoxService {
             wrapper."$key" = value
         }
 
-
         return makePdf(wrapper,contentPartial,headerPartial,footerPartial)
-
     }
 
-    def byte[] makePdf(WkhtmltoxWrapper wrapper,contentPartial,headerPartial = null,footerPartial = null) {
+    byte[] makePdf(WkhtmltoxWrapper wrapper,contentPartial,headerPartial = null,footerPartial = null) {
 
         String htmlBodyContent =        renderMailView(contentPartial)
 
@@ -53,28 +48,20 @@ class WkhtmltoxService {
             wrapper.footerHtml =        "file://" + footerFile.absolutePath
         }
 
+        def wkhtmltoxConfig = grailsApplication.mergedConfig.grails.plugin.wkhtmltox
 
-        String binaryFilePath = grailsApplication.mergedConfig.grails.plugin.wkhtmltox.binary.toString()
-
+        String binaryFilePath = wkhtmltoxConfig.binary.toString()
         if(!(new File(binaryFilePath)).exists()){
             println "Cannot find wkhtml executable at $binaryFilePath trying to make it available with the makeBinaryAvailableClosure"
-            Closure makeBinaryAvailableClosure = grailsApplication.mergedConfig.grails.plugin.wkhtmltox.makeBinaryAvailableClosure
+            Closure makeBinaryAvailableClosure = wkhtmltoxConfig.makeBinaryAvailableClosure
             makeBinaryAvailableClosure.call(binaryFilePath)
         }
 
-        WkhtmltoxExecutor wkhtmltoxExecutor = new WkhtmltoxExecutor(binaryFilePath,wrapper)
-
-        return wkhtmltoxExecutor.generatePdf(htmlBodyContent)
-
+        return new WkhtmltoxExecutor(binaryFilePath,wrapper).generatePdf(htmlBodyContent)
     }
 
-
-
-
-
-
     protected String renderMailView(PartialView partialView) {
-        return mailMessageContentRenderer.render(new StringWriter(), partialView.viewName, partialView.model, null, partialView.pluginName).out.toString();
+        return mailMessageContentRenderer.render(new StringWriter(), partialView.viewName, partialView.model, null, partialView.pluginName).out.toString()
     }
 
     File makePartialViewFile(PartialView pv){
@@ -88,5 +75,4 @@ class WkhtmltoxService {
         tempFile.setWritable(true,true)
         return tempFile
     }
-
 }
