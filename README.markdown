@@ -2,7 +2,12 @@ Grails Wkhtmltox / Wkhtmltopdf
 =========================
 
 This plugin provides an easy integration of the wkthmltox library into grails.
+
+Wkhtmltopdf
+----------------
+"Simple shell utility to convert html to pdf using the webkit rendering engine, and qt."
 http://code.google.com/p/wkhtmltopdf/
+GNU Lesser GPL
 
 Installation
 ----------------
@@ -28,7 +33,7 @@ put the following line into your Config.groovy and adjust the path to your wkhtm
 Usage
 ----------------
 
-Now you can use the plugin, either stream the content of an action as pdf ( /context/some/someAction.pdf )
+to stream the content of an action as pdf jsut call: /context/some/someAction.pdf
 
     class SomerController {
         def someAction = {
@@ -76,10 +81,64 @@ Or create binary pdf data and use them for any other purpose
         }
     }
 
+Known issues
+----------------
 
+see the following command for all options available:
+
+	wkhtmltopdf --extended-help
+		
 
 Known issues
 ----------------
 
 * wkhtmltox must work ( try: ```wkhtmltopdf www.myhomepage.com myhomepage.pdf``` see: http://code.google.com/p/wkhtmltopdf/wiki/Usage )
 * not tested on Windows
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
+	
+	use
