@@ -1,25 +1,11 @@
-import org.codehaus.groovy.grails.commons.DefaultGrailsControllerClass
-import org.apache.catalina.core.ApplicationContext
-
 class WkhtmltoxGrailsPlugin {
-    // the plugin version
     def version = "0.1.6"
-    // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.6 > *"
-    // the other plugins this plugin depends on
-    def dependsOn = ['mail': '1.0 > *',pluginConfig: '0.1.4 > *']
-    def loadAfter = ['mail','controllers'];
-    // resources that are excluded from plugin packaging
-    def pluginExcludes = [
-            "grails-app/views/error.gsp"
-    ]
-
-    // TODO Fill in these fields
+    def loadAfter = ['mail','controllers']
     def author = "Tobias Nendel"
     def authorEmail = "tobias.nendel@scubical.com"
-    def title = "Wkhtmltopdf"
-    def description = '''\\
-This Plugin provides a Wrapper for wkhtmltopdf,
+    def title = "Wkhtmltopdf Plugin"
+    def description = '''Provides a Wrapper for wkhtmltopdf,
 a Simple shell utility to convert html to pdf using the webkit rendering engine, and qt.
 
         render( filename:"Filename ${filename}.pdf",view:"/path_to_gsp",
@@ -33,61 +19,41 @@ a Simple shell utility to convert html to pdf using the webkit rendering engine,
                 headerSpacing:10
         )
 '''
-    def license = "APACHE"
 
     def observe = ['controllers']
-
-    // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/wkhtmltox"
 
-    def doWithWebDescriptor = { xml ->
-        // TODO Implement additions to web.xml (optional), this event occurs before 
-    }
-
-    def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
-    }
+    def license = "APACHE"
+	 def issueManagement = [system: 'Github', url: 'https://github.com/quorak/grails-wkhtmltopdf/issues']
+	 def scm = [url: 'https://github.com/quorak/grails-wkhtmltopdf']
 
     def doWithDynamicMethods = {ctx ->
-
         // hooking into render method
-        application.controllerClasses.each() {controllerClass ->
-            replaceRenderMethod(controllerClass)
+        application.controllerClasses.each {controllerClass ->
+            replaceRenderMethod(controllerClass, ctx)
         }
     }
 
     def onChange = {event ->
-
         // only process controller classes
-        if (application.isArtefactOfType(DefaultGrailsControllerClass.CONTROLLER, event.source)) {
+        if (application.isControllerClass(event.source)) {
             def clazz = application.getControllerClass(event.source?.name)
-            replaceRenderMethod(clazz)
+            replaceRenderMethod(clazz, event.ctx)
         }
     }
-
-    def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)
-    }
-
-    def onConfigChange = { event ->
-        // TODO Implement code that is executed when the project configuration changes.
-        // The event is the same as for 'onChange'.
-    }
-
-
 
     /**
      * This implementation is based on Marc Palmers feed plugin. It hooks into the render method
      * of a Grails controller class and adds an alternative behaviour for the mime type
      * 'text/calendar' used by the iCalendar plugin.
      */
-    private void replaceRenderMethod(controllerClass) {
+    private void replaceRenderMethod(controllerClass, ctx) {
         def oldRender = controllerClass.metaClass.pickMethod("render", [Map] as Class[])
         controllerClass.metaClass.render = {Map params ->
             if (params.contentType?.toLowerCase() == 'application/x-pdf' || response.format == "pdf") {
                 def filename = params.remove("filename")
 
-                def data = grailsApplication.mainContext.getBean('wkhtmltoxService').makePdf(params)
+                def data = ctx.wkhtmltoxService.makePdf(params)
 
                 response.setHeader("Content-disposition", "attachment; filename=${filename}")
                 response.contentType = "application/x-pdf"
@@ -103,5 +69,4 @@ a Simple shell utility to convert html to pdf using the webkit rendering engine,
             }
         }
     }
-
 }

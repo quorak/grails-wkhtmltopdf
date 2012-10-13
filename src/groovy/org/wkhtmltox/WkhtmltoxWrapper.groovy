@@ -1,14 +1,9 @@
 package org.wkhtmltox
 
-import org.wkhtmltox.PartialView
-/**
- * Created by IntelliJ IDEA.
- * User: tobiasnendel
- * Date: 10.04.11
- * Time: 10:58
- * To change this template use File | Settings | File Templates.
- */
 
+/**
+ * @author tobiasnendel
+ */
 class WkhtmltoxWrapper {
 
 
@@ -156,7 +151,7 @@ class WkhtmltoxWrapper {
 
 
     ArrayList toArgumentsList(){
-        List<String> arguments = new ArrayList<String>();
+        List<String> arguments = new ArrayList<String>()
         metaClass.properties.each{ MetaProperty property ->
 
             def propertyValue = getProperty(property.name)
