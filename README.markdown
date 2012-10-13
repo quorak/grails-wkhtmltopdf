@@ -33,13 +33,13 @@ put the following line into your Config.groovy and adjust the path to your wkhtm
 Usage
 ----------------
 
-to stream the content of an action as pdf jsut call: /context/some/someAction.pdf
+to stream the content of an controller-action as pdf just call: /context/some/someAction.pdf
 
     class SomerController {
         def someAction = {
             def someInstance = SomeDomainObject.get(params.id)
     
-            render( filename:"Rechnung ${someInstance.id}.pdf",
+            render( filename:"File ${someInstance.id}.pdf",
 					view:"/some/someGspTemplate",
                     model:[someInstance:someInstance],
                     header:"/pdf/someHeader",
@@ -86,7 +86,7 @@ write your gsps as usual, just make sure, that the url's to the resources are ab
 	<link rel="stylesheet" href="${resource(dir: '/css/style.css', absolute: true)}" type="text/css"/>
 	<img src="${resource(dir: '/images/image.jpg', absolute: true)}" width="200px"/>
 
-Known issues
+Options
 ----------------
 
 see the following command for all options available:
