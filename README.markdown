@@ -21,6 +21,12 @@ linux
     apt-get install wkhtmltopdf
 
 see: http://code.google.com/p/wkhtmltopdf/wiki/compilation
+compiled versions available at: http://code.google.com/p/wkhtmltopdf/downloads/list
+
+finally make sure the following command works as expected:
+
+    wkhtmltopdf www.google.de test.pdf
+    
 
 Configuration
 ----------------
@@ -28,6 +34,16 @@ Configuration
 put the following line into your Config.groovy and adjust the path to your wkhtmltox binary ( which wkhtmltopdf )
 
     grails.plugin.wkhtmltox.binary = "/usr/bin/wkhtmltopdf"
+    
+
+also add the pdf mime type to Config.groovy
+
+    grails.mime.types = [
+        all:           '*/*',
+        .....
+       pdf:         'application/x-pdf'
+    ]
+    
 
 
 Usage
