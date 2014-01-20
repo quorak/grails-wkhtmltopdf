@@ -33,7 +33,13 @@ Configuration
 
 put the following line into your Config.groovy and adjust the path to your wkhtmltox binary ( which wkhtmltopdf )
 
+unix
+
     grails.plugin.wkhtmltox.binary = "/usr/bin/wkhtmltopdf"
+    
+windows
+    
+    grails.plugin.wkhtmltox.binary = "C:/local/wkhtmltopdf/wkhtmltopdf.exe"
     
 
 also add the pdf mime type to Config.groovy
@@ -114,4 +120,4 @@ Known issues
 ----------------
 
 * wkhtmltox must work ( try: ```wkhtmltopdf www.myhomepage.com myhomepage.pdf``` see: http://code.google.com/p/wkhtmltopdf/wiki/Usage )
-* not tested on Windows
+* not tested on Windows (except windows7)
