@@ -23,15 +23,15 @@ class WkhtmltoxWrapper {
     boolean grayscale							//						//PDF will be generated in grayscale
     //help										//						//Display help
     //htmldoc									//						//Output program html help
-    Integer  imageDpi								//<integer>				//When embedding images scale them down to this dpi (default 600)
-    Integer  imageQuality							//<integer>				//When jpeg compressing images use this quality (default 94)
+    Integer  imageDpi							//<integer>				//When embedding images scale them down to this dpi (default 600)
+    Integer  imageQuality					    //<integer>				//When jpeg compressing images use this quality (default 94)
     boolean lowquality							//						//Generates lower quality pdf/ps. Useful to shrink the result document space
-    //manpage									//						//Output program man page
-    Integer  marginBottom						//						//<unitreal>						//Set the page bottom margin (default 10mm)
-    Integer  marginLeft							//						//<unitreal>						//Set the page left margin (default 10mm)
-    Integer  marginRight						//						//<unitreal>						//Set the page right margin (default 10mm)
-    Integer  marginTop							//						//<unitreal>						//Set the page top margin (default 10mm)
-    String orientation							//						//<orientation>						//Set orientation to Landscape or Portrait (default Portrait)
+    //manpage									//Output program man page
+    Integer  marginBottom						//<unitreal>			//Set the page bottom margin (default 10mm)
+    Integer  marginLeft							//<unitreal>			//Set the page left margin (default 10mm)
+    Integer  marginRight						´//<unitreal>			//Set the page right margin (default 10mm)
+    Integer  marginTop							//<unitreal>			//Set the page top margin (default 10mm)
+    String orientation							//<orientation>			//Set orientation to Landscape or Portrait (default Portrait)
     String outputFormat							//<format>				//Specify an output format to use pdf or ps, instead of looking at the extention of the output filename
     Integer  pageHeight							//<unitreal>			//Page height
     String pageSize								//<Size>				//Set paper size to: A4, Letter, etc. (default A4)
@@ -69,7 +69,7 @@ class WkhtmltoxWrapper {
     //no-custom-header-propagation				//						//Do not add HTTP headers specified by --custom-header for each resource request.
     boolean debugJavascript						//						//Show javascript debugging output
     boolean noDebugJavascript					//						//Do not show javascript debugging output (default)
-    String defaultHeader						//						//Add a default header, with the name of the page to the left, and the page number to the right, this is short for: --header-left='[webpage]' --header-right='[page]/[toPage]' --top 2cm --header-line
+    boolean defaultHeader						//						//Add a default header, with the name of the page to the left, and the page number to the right, this is short for: --header-left='[webpage]' --header-right='[page]/[toPage]' --top 2cm --header-line
     String encoding								//<encoding>			//Set the default text encoding, for input
     boolean disableExternalLinks				//						//Do not make links to remote web pages
     boolean enableExternalLinks					//						//Make links to remote web pages (default)
@@ -94,8 +94,8 @@ class WkhtmltoxWrapper {
     boolean enablePlugins						//						//Enable installed plugins (plugins will likely not work)
     //post										//<name> <value>		//Add an additional post field (repeatable)
     //post-file									//<name> <path>			//Post an additional file (repeatable)
-    String printMediaType						//						//Use print media-type instead of screen
-    String noPrintMediaType						//						//Do not use print media-type instead of screen (default)
+    boolean printMediaType						//						//Use print media-type instead of screen
+    boolean noPrintMediaType					//						//Do not use print media-type instead of screen (default)
     String proxy								//<proxy>				//Use a proxy
     //radiobutton-checked-svg					//<path>				//Use this SVG file when rendering checked radiobuttons
     //radiobutton-svg							//<path>				//Use this SVG file when rendering unchecked radiobuttons
