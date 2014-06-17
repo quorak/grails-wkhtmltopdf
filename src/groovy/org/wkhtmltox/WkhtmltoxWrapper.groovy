@@ -29,7 +29,7 @@ class WkhtmltoxWrapper {
     //manpage									//Output program man page
     Integer  marginBottom						//<unitreal>			//Set the page bottom margin (default 10mm)
     Integer  marginLeft							//<unitreal>			//Set the page left margin (default 10mm)
-    Integer  marginRight						´//<unitreal>			//Set the page right margin (default 10mm)
+    Integer  marginRight						//<unitreal>			//Set the page right margin (default 10mm)
     Integer  marginTop							//<unitreal>			//Set the page top margin (default 10mm)
     String orientation							//<orientation>			//Set orientation to Landscape or Portrait (default Portrait)
     String outputFormat							//<format>				//Specify an output format to use pdf or ps, instead of looking at the extention of the output filename
