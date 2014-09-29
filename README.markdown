@@ -47,7 +47,7 @@ also add the pdf mime type to Config.groovy
     grails.mime.types = [
         all:           '*/*',
         .....
-       pdf:         'application/x-pdf'
+       pdf:         'application/pdf'
     ]
     
 
@@ -97,7 +97,7 @@ Or create binary pdf data and use them for any other purpose
             //    multipart true
             //    to "mail@mail.de"
             //    subject "see PDF Attachment";
-            //    attachBytes "PDF Attachment.pdf", "application/x-pdf", pdfData
+            //    attachBytes "PDF Attachment.pdf", "application/pdf", pdfData
             //    body "see my pdf attachment"
             //}
         }
