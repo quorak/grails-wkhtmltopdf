@@ -50,13 +50,13 @@ a Simple shell utility to convert html to pdf using the webkit rendering engine,
     private void replaceRenderMethod(controllerClass, ctx) {
         def oldRender = controllerClass.metaClass.pickMethod("render", [Map] as Class[])
         controllerClass.metaClass.render = {Map params ->
-            if (params.contentType?.toLowerCase() == 'application/x-pdf' || response.format == "pdf") {
+            if (params.contentType?.toLowerCase() == 'application/pdf' || response.format == "pdf") {
                 def filename = params.remove("filename")
 
                 def data = ctx.wkhtmltoxService.makePdf(params)
 
                 response.setHeader("Content-disposition", "attachment; filename=${filename}")
-                response.contentType = "application/x-pdf"
+                response.contentType = "application/pdf"
                 response.outputStream.write(data)
                 response.characterEncoding = 'UTF-8'
                 response.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate') //HTTP/1.1
